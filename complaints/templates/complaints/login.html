@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Hostel Complaint Tracker</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #101c35, #2563eb);
+        }
+
+        .login-box {
+            width: 100%;
+            max-width: 420px;
+            padding: 32px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 15px 40px #0003;
+        }
+
+        .logo {
+            text-align: center;
+            font-size: 42px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            color: #172033;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin: 15px 0 7px;
+            font-weight: bold;
+            color: #334155;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        input:focus {
+            outline: 2px solid #93c5fd;
+            border-color: #2563eb;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 13px;
+            margin-top: 22px;
+            border: none;
+            border-radius: 8px;
+            background: #2563eb;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .bottom-text {
+            text-align: center;
+            margin-top: 20px;
+            color: #64748b;
+        }
+
+        a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .errorlist {
+            color: #dc2626;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-box">
+        <div class="logo">🏠</div>
+
+        <h1>Welcome Back!</h1>
+        <p class="subtitle">Login to Hostel Complaint Tracker</p>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            {% if form.errors %}
+                <p class="errorlist">
+                    Username or password is incorrect. Please try again.
+                </p>
+            {% endif %}
+
+            <label for="{{ form.username.id_for_label }}">
+                Username
+            </label>
+            {{ form.username }}
+
+            <label for="{{ form.password.id_for_label }}">
+                Password
+            </label>
+            {{ form.password }}
+
+            <input type="hidden" name="next" value="{{ next }}">
+
+            <button class="submit-btn" type="submit">
+                Login
+            </button>
+        </form>
+
+        <p class="bottom-text">
+            New here?
+            <a href="{% url 'register' %}">Create Account</a>
+        </p>
+    </div>
+</body>
+</html>

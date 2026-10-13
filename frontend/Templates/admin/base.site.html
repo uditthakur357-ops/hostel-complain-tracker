@@ -1,0 +1,58 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block title %}HostelTrack | Admin Console{% endblock %}
+
+{% block extrastyle %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'admin-custom.css' %}">
+<style>
+#header {
+    background: linear-gradient(120deg, #071326, #123b67) !important;
+    padding: 18px 28px !important;
+    border-bottom: 1px solid #258cff;
+}
+#site-name a {
+    font-size: 25px !important;
+    font-weight: 800 !important;
+    letter-spacing: -.5px;
+    color: #ffffff !important;
+}
+#site-name a:before { content: "◆ "; color: #38bdf8; }
+body, #container { background: #071326 !important; }
+#content { padding: 28px !important; }
+.module {
+    border: 1px solid #1c3e60 !important;
+    border-radius: 14px !important;
+    overflow: hidden;
+    box-shadow: 0 8px 24px #0003;
+    margin-bottom: 22px !important;
+}
+.module h2, .module caption {
+    background: #102b4b !important;
+    padding: 14px !important;
+}
+.module table th, .module table td {
+    padding: 13px !important;
+}
+div.breadcrumbs {
+    background: #0b1d34 !important;
+    padding: 13px 25px !important;
+}
+input[type=submit], .button, .submit-row input {
+    background: #147fe8 !important;
+    border: 0 !important;
+    border-radius: 8px !important;
+    padding: 10px 17px !important;
+}
+a:link, a:visited { color: #55baff; }
+</style>
+{% endblock %}
+
+{% block branding %}
+<h1 id="site-name">
+    <a href="{% url 'admin:index' %}">HostelTrack <span style="color:#38bdf8">ADMIN</span></a>
+</h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

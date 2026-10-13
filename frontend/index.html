@@ -1,0 +1,119 @@
+DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HostelTrack | Student Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <a class="brand" href="/">
+      <span class="brand-icon"><i data-lucide="house"></i></span>
+      <span><b>Hostel<span>Track</span></b><small>Your Hostel, Our Priority</small></span>
+    </a>
+
+    <div class="nav-label">WORKSPACE</div>
+    <nav class="nav">
+      <a class="nav-link active" href="#dashboard"><i data-lucide="layout-dashboard"></i> Home</a>
+      <a class="nav-link" href="#newComplaint"><i data-lucide="circle-plus"></i> Submit Complaint</a>
+      <a class="nav-link" href="#recent"><i data-lucide="clipboard-list"></i> My Complaints</a>
+      <a class="nav-link" href="#statistics"><i data-lucide="chart-no-axes-combined"></i> Track Status</a>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <div class="sidebar-promo">
+        <div class="promo-symbol"><i data-lucide="building-2"></i></div>
+        <span class="eyebrow">BETTER LIVING</span>
+        <h3>Better Hostel Life, Together.</h3>
+        <p>Every concern matters. Let's make your hostel better.</p>
+      </div>
+      <div class="support"><span class="support-icon"><i data-lucide="headset"></i></span><span><b>Student Support</b><small>Hostel help desk</small></span></div>
+      <button class="logout" id="logoutBtn"><i data-lucide="log-out"></i> Sign out</button>
+    </div>
+  </aside>
+
+  <main class="main" id="dashboard">
+    <header class="topbar">
+      <div class="mobile-brand">Hostel<span>Track</span></div>
+      <label class="searchbox"><i data-lucide="search"></i><input id="searchInput" placeholder="Search complaints, water, electricity..."></label>
+      <div class="top-right">
+        <span class="online"><span></span> System online</span>
+        <div class="avatar" id="avatar">U</div>
+        <div class="user-info"><b id="userName">Student</b><small>Hostel Student</small></div>
+      </div>
+    </header>
+
+    <div class="content">
+      <section class="hero">
+        <div class="hero-copy">
+          <span class="welcome-tag"><span class="live-dot"></span> STUDENT DASHBOARD</span>
+          <h1>Your hostel.<br>Your voice. <span>Your solution.</span></h1>
+          <p>Report hostel issues, track every update and help build a better place to live.</p>
+          <a class="hero-button" href="#newComplaint">Report an issue <i data-lucide="arrow-up-right"></i></a>
+          <div class="hero-foot"><i data-lucide="shield-check"></i> Transparent reporting · Easy tracking</div>
+        </div>
+        <div class="hero-art">
+          <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1100&q=85" alt="Modern residential building">
+          <div class="image-shade"></div>
+          <div class="hero-float"><span class="float-icon"><i data-lucide="check-circle-2"></i></span><span><b>Your voice matters</b><small>Every issue deserves attention</small></span></div>
+          <div class="hero-caption">A BETTER HOSTEL STARTS HERE</div>
+        </div>
+      </section>
+
+      <section class="stats">
+        <article class="stat-card blue-stat"><div class="stat-top"><span>Total complaints</span><span class="stat-icon"><i data-lucide="files"></i></span></div><div class="stat-number" id="totalCount">—</div><div class="stat-bottom"><span class="stat-note">All reports submitted</span><i data-lucide="trending-up"></i></div></article>
+        <article class="stat-card amber-stat"><div class="stat-top"><span>Pending</span><span class="stat-icon"><i data-lucide="clock-3"></i></span></div><div class="stat-number" id="pendingCount">—</div><div class="stat-bottom"><span class="stat-note">Awaiting resolution</span><span class="mini-pill amber">IN QUEUE</span></div></article>
+        <article class="stat-card green-stat"><div class="stat-top"><span>Resolved</span><span class="stat-icon"><i data-lucide="check"></i></span></div><div class="stat-number" id="resolvedCount">—</div><div class="stat-bottom"><span class="stat-note">Successfully completed</span><span class="mini-pill green">COMPLETED</span></div></article>
+        <article class="stat-card red-stat"><div class="stat-top"><span>Overdue</span><span class="stat-icon"><i data-lucide="alert-circle"></i></span></div><div class="stat-number" id="overdueCount">—</div><div class="stat-bottom"><span class="stat-note">Past target time</span><span class="mini-pill red">ATTENTION</span></div></article>
+      </section>
+
+      <section class="workspace">
+        <article class="panel form-panel" id="newComplaint">
+          <div class="panel-heading"><div class="heading-icon blue-bg"><i data-lucide="square-pen"></i></div><div><h2>Create a complaint</h2><p>Tell us what needs attention.</p></div></div>
+          <form id="complaintForm">
+            <label>Complaint type<select id="complaintType" required><option value="">Select a category</option><option>Electricity</option><option>Water</option><option>Internet</option><option>Cleaning</option><option>Other</option></select></label>
+            <label>Complaint title<input id="complaintTitle" maxlength="150" placeholder="e.g. Water supply not working" required></label>
+            <label>Description<textarea id="complaintDescription" maxlength="500" rows="4" placeholder="Describe the issue clearly..." required></textarea><span class="field-hint"><span id="charCount">0</span>/500 characters</span></label>
+            <div class="form-row"><label>Hostel block<input id="hostelBlock" placeholder="e.g. Block B" required></label><label>Room number<input id="roomNumber" placeholder="e.g. 203" required></label></div>
+            <div class="privacy-note"><i data-lucide="lock-keyhole"></i><span>Your report is private and linked to your account.</span></div>
+            <div id="formMessage" class="form-message" role="status"></div>
+            <button class="primary-button" id="submitBtn" type="submit"><i data-lucide="send"></i> Submit complaint <i data-lucide="arrow-right"></i></button>
+          </form>
+        </article>
+
+        <article class="panel complaints-panel" id="recent">
+          <div class="panel-heading list-heading"><div class="heading-icon violet-bg"><i data-lucide="list-checks"></i></div><div><h2>Recent complaints</h2><p>Your reports, all in one place.</p></div><button class="icon-button" id="refreshBtn" title="Refresh"><i data-lucide="refresh-cw"></i></button></div>
+          <div class="list-controls"><label class="mini-search"><i data-lucide="search"></i><input id="listSearch" placeholder="Search your reports"></label><select id="statusFilter"><option value="">All statuses</option><option>Open</option><option>In Progress</option><option>Resolved</option></select></div>
+          <div class="complaints-list" id="complaintsList"><div class="loading-state"><span class="spinner"></span><p>Loading your complaints...</p></div></div>
+          <div class="list-footer"><span id="listCount">Loading reports</span><span><span class="live-dot"></span> Live from database</span></div>
+        </article>
+
+        <aside class="right-column">
+          <article class="panel filter-panel">
+            <div class="panel-heading"><div class="heading-icon cyan-bg"><i data-lucide="sliders-horizontal"></i></div><div><h2>Quick filters</h2><p>Find a specific report.</p></div></div>
+            <label>Complaint category<select id="typeFilter"><option value="">All categories</option><option>Electricity</option><option>Water</option><option>Internet</option><option>Cleaning</option><option>Other</option></select></label>
+            <div class="filter-summary"><i data-lucide="info"></i> Filters update your complaint list.</div>
+            <button class="secondary-button" id="clearFilters">Clear all filters <i data-lucide="rotate-ccw"></i></button>
+          </article>
+
+          <article class="panel chart-panel" id="statistics">
+            <div class="panel-heading"><div class="heading-icon green-bg"><i data-lucide="chart-pie"></i></div><div><h2>Complaint overview</h2><p>Your current report status.</p></div></div>
+            <div class="chart-layout"><div class="donut" id="donutChart"><div class="donut-center"><b id="chartTotal">0</b><span>Reports</span></div></div><div class="chart-legend"><div><span class="legend-dot resolved-dot"></span><span>Resolved</span><b id="legendResolved">0</b></div><div><span class="legend-dot pending-dot"></span><span>Pending</span><b id="legendPending">0</b></div><div><span class="legend-dot overdue-dot"></span><span>Overdue</span><b id="legendOverdue">0</b></div></div></div>
+            <div class="chart-foot"><i data-lucide="activity"></i> Updated from your latest reports</div>
+          </article>
+
+          <article class="help-card"><div class="help-orb"><i data-lucide="heart-handshake"></i></div><span class="eyebrow">WE'RE HERE TO HELP</span><h3>A better hostel begins with you.</h3><p>Report it. Track it. Make a difference.</p><div class="help-bottom">Every complaint counts <i data-lucide="arrow-up-right"></i></div></article>
+        </aside>
+      </section>
+      <footer class="footer"><span>©️ 2026 HostelTrack · Student Support System</span><span><span class="live-dot"></span> Secure dashboard</span></footer>
+    </div>
+  </main>
+</div>
+<script src="/static/script.js"></script>
+</body>
+</html>

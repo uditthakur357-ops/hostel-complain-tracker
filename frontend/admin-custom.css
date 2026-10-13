@@ -1,0 +1,107 @@
+:root {
+  color-scheme: dark;
+  --primary: #168cff;
+  --body-bg: #071326;
+  --darkened-bg: #0b1d34;
+  --selected-bg: #12375b;
+  --border-color: #203d5c;
+  --body-fg: #e6f0ff;
+  --header-bg: #08172c;
+  --header-color: #f0f7ff;
+}
+
+body, #container {
+  background: #071326 !important;
+  color: #e6f0ff !important;
+  font-family: Inter, Arial, sans-serif !important;
+}
+
+#header {
+  background: linear-gradient(100deg, #07162b, #102b4b) !important;
+  border-bottom: 1px solid #214c75;
+  padding: 15px 25px;
+}
+
+#site-name a {
+  font-size: 23px;
+  font-weight: 800;
+  letter-spacing: -.5px;
+  color: #f0f7ff !important;
+}
+
+div.breadcrumbs {
+  background: #0b1d34 !important;
+  border-bottom: 1px solid #203d5c;
+  padding: 14px 25px;
+}
+
+.module, .dashboard .module {
+  background: #0b1d34 !important;
+  border: 1px solid #203d5c !important;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 18px;
+  box-shadow: 0 8px 24px #0002;
+}
+
+.module h2, .module caption, .inline-group h2 {
+  background: #102b4b !important;
+  color: #eaf5ff !important;
+  padding: 13px 16px !important;
+}
+
+a:link, a:visited {
+  color: #59baff;
+}
+
+a:hover {
+  color: #9bd9ff;
+}
+
+table thead th {
+  background: #10243e !important;
+  color: #d8eaff !important;
+}
+
+tr:nth-child(even), .row-form-errors {
+  background: #0d2038 !important;
+}
+
+td, th {
+  border-color: #203d5c !important;
+}
+
+input, textarea, select, .vTextField {
+  background: #07172b !important;
+  color: #edf6ff !important;
+  border: 1px solid #294b70 !important;
+  border-radius: 7px !important;
+  padding: 8px !important;
+}
+
+.button, input[type=submit], .submit-row input {
+  background: #117ee8 !important;
+  color: white !important;
+  border: 0 !important;
+  border-radius: 8px !important;
+  padding: 10px 16px !important;
+  font-weight: 700;
+}
+
+.button:hover, input[type=submit]:hover {
+  background: #2998ff !important;
+}
+
+#user-tools {
+  color: #b9d3ef !important;
+}
+
+#content {
+  padding: 25px;
+}
+
+@media(max-width: 767px) {
+  #content { padding: 12px; }
+  #header { padding: 12px; }
+  #site-name a { font-size: 19px; }
+}
